@@ -13,6 +13,9 @@ source:
 build:
   skip: True  # [not linux]
   number: 0
+  # https://abi-laboratory.pro/index.php?view=timeline&l=libva
+  run_exports:
+    - {{ pin_subpackage('libva', max_pin='x.x') }}
   # https://01.org/linuxgraphics/documentation/build-guide-0
   script:
     - ./autogen.sh --prefix=$PREFIX
@@ -26,10 +29,10 @@ requirements:
     - libtool
     - pkg-config
   host:
-    - libdrm
+    # build 0 of libdrm 2.4.96 didn't have the run_exports
+    - libdrm >=2.4.96=*_1
     - mesalib
   run:
-    - libdrm
     - mesalib
 
 test:
