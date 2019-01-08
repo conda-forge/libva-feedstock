@@ -18,3 +18,4 @@ jobs:
 
   - script: .azure-pipelines/run_docker_build.sh
     displayName: Run docker build
+    
