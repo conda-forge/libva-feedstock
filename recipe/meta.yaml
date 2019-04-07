@@ -18,6 +18,10 @@ build:
     - {{ pin_subpackage('libva', max_pin='x.x') }}
   # https://01.org/linuxgraphics/documentation/build-guide-0
   script:
+    - touch Makefile.am
+    - touch */Makefile.am
+    - touch */*/Makefile.am
+    - touch configure.ac
     - ./autogen.sh --prefix=$PREFIX
     - make -j$(nproc) install
 
