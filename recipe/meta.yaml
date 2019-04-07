@@ -1,5 +1,5 @@
 {% set name = "libva" %}
-{% set version = "2.4.0" %}
+{% set version = "2.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz
   fn: libva-{{ version }}.tar.gz
-  sha256: 67f0289944b3c39307ab0f1b7ab33de072f6e674758d2f122b51616c3d7b115b
+  sha256: 8d65764d2efb1fdeb0c2ad51c7e2f9db1b2d6b005c58a85fd814f8f7b8c89a2d
 
 build:
   skip: True  # [not linux]
@@ -18,6 +18,10 @@ build:
     - {{ pin_subpackage('libva', max_pin='x.x') }}
   # https://01.org/linuxgraphics/documentation/build-guide-0
   script:
+    - touch Makefile.am
+    - touch */Makefile.am
+    - touch */*/Makefile.am
+    - touch configure.ac
     - ./autogen.sh --prefix=$PREFIX
     - make -j$(nproc) install
 
