@@ -1,5 +1,5 @@
 {% set name = "libva" %}
-{% set version = "2.4.1" %}
+{% set version = "2.5.0.pre1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz
   fn: libva-{{ version }}.tar.gz
-  sha256: 8d65764d2efb1fdeb0c2ad51c7e2f9db1b2d6b005c58a85fd814f8f7b8c89a2d
+  sha256: e686b708a7bc04b1cfcf8bb51460150637f3616e048a21687b4cae554d6bd746
 
 build:
   skip: True  # [not linux]
