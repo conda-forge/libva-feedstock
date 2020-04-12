@@ -1,5 +1,5 @@
 {% set name = "libva" %}
-{% set version = "2.6.1" %}
+{% set version = "2.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz
   fn: libva-{{ version }}.tar.gz
-  sha256: 965f581e096508ece26ea9bef8bd769e93f9d1fe6840e309cc925cfef35ad13f
+  sha256: 0952ee21069c560f48ebafcba91e1ffb72e5a8736dbab3559af959221b51598f
 
 build:
-  skip: True  # [not linux]
+  skip: true  # [not linux]
   number: 0
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -53,7 +53,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: COPYING
-  summary: 'Libva is an implementation for VA-API (Video Acceleration API)'
+  summary: Libva is an implementation for VA-API (Video Acceleration API)
 
   # The remaining entries in this section are optional, but recommended
   description: |
