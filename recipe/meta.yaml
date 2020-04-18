@@ -1,5 +1,5 @@
 {% set name = "libva" %}
-{% set version = "2.7.0" %}
+{% set version = "2.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 source:
   url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz
   fn: libva-{{ version }}.tar.gz
-  sha256: 0952ee21069c560f48ebafcba91e1ffb72e5a8736dbab3559af959221b51598f
+  sha256: 9a3167c9af8c0ce10c4a46791557f934457b78fcc625111dcefaa7f30b7eb289
 
 build:
   skip: true  # [not linux]
-  number: 1
+  number: 0
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
     - {{ pin_subpackage('libva', max_pin='x.x') }}
