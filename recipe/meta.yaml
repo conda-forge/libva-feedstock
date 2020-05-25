@@ -13,9 +13,10 @@ source:
 build:
   skip: true  # [not linux]
   number: 0
+  # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
-    - {{ pin_subpackage('libva', max_pin='x.x') }}
+    - {{ pin_subpackage('libva', max_pin='x') }}
   # https://01.org/linuxgraphics/documentation/build-guide-0
   script:
     - touch Makefile.am
