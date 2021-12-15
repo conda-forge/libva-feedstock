@@ -25,11 +25,12 @@ requirements:
     - automake
     - libtool
     - pkg-config
+    - make
   host:
     - libdrm
     # Seems like they want to install mesalib, but conda-forge complains of
     # overlinking if we include it as a run requirement
-    - mesalib
+    # - mesalib
 
 test:
   commands:
