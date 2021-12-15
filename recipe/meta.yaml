@@ -12,19 +12,11 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 0
+  number: 1
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
     - {{ pin_subpackage('libva', max_pin='x') }}
-  # https://01.org/linuxgraphics/documentation/build-guide-0
-  script:
-    - touch Makefile.am
-    - touch */Makefile.am
-    - touch */*/Makefile.am
-    - touch configure.ac
-    - ./autogen.sh --prefix=$PREFIX
-    - make -j$(nproc) install
 
 requirements:
   build:
@@ -33,11 +25,9 @@ requirements:
     - automake
     - libtool
     - pkg-config
+    - make
   host:
     - libdrm
-    - mesalib
-  run:
-    - mesalib
 
 test:
   commands:
