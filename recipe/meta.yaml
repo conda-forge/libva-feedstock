@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 1
+  number: 2
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -28,7 +28,13 @@ requirements:
     - make
   host:
     - libdrm
-
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxfixes
+  run:
+    - xorg-libx11
+    - xorg-libxext
+    - xorg-libxfixes
 test:
   commands:
     - test -f $PREFIX/include/va/va.h
@@ -38,6 +44,8 @@ test:
     - test -f $PREFIX/lib/pkgconfig/libva-drm.pc
     - test -f $PREFIX/lib/libva-drm.so
     - test -f $PREFIX/lib/libva-drm.so.2
+    - test -f $PREFIX/lib/libva-x11.so
+    - test -f $PREFIX/lib/libva-x11.so.2
 
 about:
   home: https://github.com/intel/libva
