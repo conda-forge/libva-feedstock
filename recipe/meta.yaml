@@ -44,6 +44,8 @@ test:
     - test -f $PREFIX/lib/pkgconfig/libva-drm.pc
     - test -f $PREFIX/lib/libva-drm.so
     - test -f $PREFIX/lib/libva-drm.so.2
+    - test -f $PREFIX/lib/libva-x11.so
+    - test -f $PREFIX/lib/libva-x11.so.2
 
 about:
   home: https://github.com/intel/libva
