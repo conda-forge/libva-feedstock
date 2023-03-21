@@ -1,11 +1,11 @@
-About libva
-===========
+About libva-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libva-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/intel/libva
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libva-feedstock/blob/main/LICENSE.txt)
 
 Summary: Libva is an implementation for VA-API (Video Acceleration API)
 
