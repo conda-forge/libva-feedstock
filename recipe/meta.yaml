@@ -33,6 +33,7 @@ requirements:
     - xorg-libxext
     - xorg-libxfixes
   run:
+    - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
 
