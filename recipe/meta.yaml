@@ -30,9 +30,9 @@ requirements:
   host:
     - libdrm
     - xorg-libx11
-    - xorg-libxext
     - xorg-libxfixes
   run:
+    - xorg-libxext
     - xorg-libxfixes
 
 test:
