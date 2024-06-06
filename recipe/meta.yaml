@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 0
+  number: 1
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -20,6 +20,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - autoconf
     - automake
@@ -28,13 +29,16 @@ requirements:
     - make
   host:
     - libdrm
+    - libxcb
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
   run:
+    - libxcb
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
+
 test:
   commands:
     - test -f $PREFIX/include/va/va.h
@@ -65,3 +69,4 @@ extra:
   recipe-maintainers:
     - gabm
     - hmaarrfk
+    - ehfd
