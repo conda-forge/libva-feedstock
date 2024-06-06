@@ -32,10 +32,10 @@ requirements:
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
+    - wayland-scanner
   run:
-    - xorg-libx11
-    - xorg-libxext
     - xorg-libxfixes
+
 test:
   commands:
     - test -f $PREFIX/include/va/va.h
