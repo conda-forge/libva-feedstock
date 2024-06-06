@@ -182,6 +182,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@ehfd](https://github.com/ehfd/)
 * [@gabm](https://github.com/gabm/)
 * [@hmaarrfk](https://github.com/hmaarrfk/)
 
