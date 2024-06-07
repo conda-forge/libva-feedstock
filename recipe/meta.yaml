@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 1
+  number: 2
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -29,12 +29,10 @@ requirements:
     - make
   host:
     - libdrm
-    - libxcb
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
   run:
-    - libxcb
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
