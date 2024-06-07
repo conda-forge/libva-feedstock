@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 1
+  number: 3
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
