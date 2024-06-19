@@ -13,7 +13,7 @@ VA-API is an open-source library and API specification, which provides
 access to graphics hardware acceleration capabilities for video processing.
 It consists of a main library and driver-specific acceleration backends
 for each supported hardware vendor.
- 
+
 
 Current build status
 ====================

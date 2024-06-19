@@ -1,12 +1,17 @@
-set -ex
+#!/bin/bash
+set -e -x
 
-# https://01.org/linuxgraphics/documentation/build-guide-0
-touch Makefile.am
-touch */Makefile.am
-touch */*/Makefile.am
-touch configure.ac
+mkdir -pm755 build
+pushd build
 
-./autogen.sh --prefix=$PREFIX
+export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS}:}:${PREFIX}/share:${BUILD_PREFIX}/share"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}${PREFIX}/lib/pkgconfig:${BUILD_PREFIX}/lib/pkgconfig"
 
-make -j${CPU_COUNT}
-make install
+export PKG_CONFIG="$(which pkg-config)"
+
+meson setup ${MESON_ARGS} ..
+
+ninja
+ninja install
+
+popd

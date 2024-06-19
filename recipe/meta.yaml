@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [not linux]
-  number: 1
+  number: 3
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -22,19 +22,20 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - autoconf
-    - automake
-    - libtool
     - pkg-config
-    - make
+    - meson
+    - ninja
   host:
     - libdrm
+    # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
+    # - libglvnd
+    - wayland
     - libxcb
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
   run:
-    - libxcb
+    - wayland-protocols
     - xorg-libx11
     - xorg-libxext
     - xorg-libxfixes
@@ -45,11 +46,23 @@ test:
     - test -f $PREFIX/lib/libva.so
     - test -f $PREFIX/lib/libva.so.2
     - test -f $PREFIX/lib/pkgconfig/libva.pc
-    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc
+    - test -f $PREFIX/include/va/va_drm.h
     - test -f $PREFIX/lib/libva-drm.so
     - test -f $PREFIX/lib/libva-drm.so.2
+    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc
+    # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
+    # - test -f $PREFIX/include/va/va_glx.h
+    # - test -f $PREFIX/lib/libva-glx.so
+    # - test -f $PREFIX/lib/libva-glx.so.2
+    # - test -f $PREFIX/lib/pkgconfig/libva-glx.pc
+    - test -f $PREFIX/include/va/va_wayland.h
+    - test -f $PREFIX/lib/libva-wayland.so
+    - test -f $PREFIX/lib/libva-wayland.so.2
+    - test -f $PREFIX/lib/pkgconfig/libva-wayland.pc
+    - test -f $PREFIX/include/va/va_x11.h
     - test -f $PREFIX/lib/libva-x11.so
     - test -f $PREFIX/lib/libva-x11.so.2
+    - test -f $PREFIX/lib/pkgconfig/libva-x11.pc
 
 about:
   home: https://github.com/intel/libva
