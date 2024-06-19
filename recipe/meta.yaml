@@ -22,11 +22,9 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - autoconf
-    - automake
-    - libtool
     - pkg-config
-    - make
+    - meson
+    - ninja
   host:
     - libdrm
     # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
@@ -38,6 +36,8 @@ requirements:
     - xorg-libxfixes
   run:
     - wayland-protocols
+    - xorg-libx11
+    - xorg-libxext
     - xorg-libxfixes
 
 test:
