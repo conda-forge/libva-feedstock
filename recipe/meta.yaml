@@ -27,6 +27,7 @@ requirements:
   host:
     - libdrm           # [linux]
     - libgl-devel      # [linux]
+    - libglx-devel     # [linux]
     - libegl-devel     # [linux]
     - wayland          # [linux]
     - libxcb           # [linux]
@@ -47,11 +48,10 @@ test:
     - test -f $PREFIX/lib/libva-drm.so                   # [unix]
     - test -f $PREFIX/lib/libva-drm.so.2                 # [unix]
     - test -f $PREFIX/lib/pkgconfig/libva-drm.pc         # [unix]
-    # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
-    # - test -f $PREFIX/include/va/va_glx.h
-    # - test -f $PREFIX/lib/libva-glx.so
-    # - test -f $PREFIX/lib/libva-glx.so.2
-    # - test -f $PREFIX/lib/pkgconfig/libva-glx.pc
+    - test -f $PREFIX/include/va/va_glx.h
+    - test -f $PREFIX/lib/libva-glx.so
+    - test -f $PREFIX/lib/libva-glx.so.2
+    - test -f $PREFIX/lib/pkgconfig/libva-glx.pc
     - test -f $PREFIX/include/va/va_wayland.h           # [unix]
     - test -f $PREFIX/lib/libva-wayland.so              # [unix]
     - test -f $PREFIX/lib/libva-wayland.so.2            # [unix]
