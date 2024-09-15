@@ -60,6 +60,9 @@ test:
     - test -f $PREFIX/lib/libva-x11.so                   # [unix]
     - test -f $PREFIX/lib/libva-x11.so.2                 # [unix]
     - test -f $PREFIX/lib/pkgconfig/libva-x11.pc         # [unix]
+    - if not exist %PREFIX%/Library/bin/va.dll exit 1       # [win]
+    - if not exist %PREFIX%/Library/lib/va.lib exit 1       # [win]
+    - if not exist %PREFIX%/Library/include/va/va.h exit 1  # [win]
 
 about:
   home: https://github.com/intel/libva
