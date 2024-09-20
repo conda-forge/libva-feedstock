@@ -1,18 +1,17 @@
-{% set name = "libva" %}
 {% set version = "2.22.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: libva
   version: {{ version }}
 
 source:
-  url: https://github.com/intel/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/intel/libva/archive/{{ version }}.tar.gz
   fn: libva-{{ version }}.tar.gz
   sha256: 467c418c2640a178c6baad5be2e00d569842123763b80507721ab87eb7af8735
 
 build:
-  skip: true  # [not linux]
-  number: 0
+  skip: true  # [osx]
+  number: 1
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -26,43 +25,44 @@ requirements:
     - meson
     - ninja
   host:
-    - libdrm
-    # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
-    # - libglvnd
-    - wayland
-    - libxcb
-    - xorg-libx11
-    - xorg-libxext
-    - xorg-libxfixes
+    - libdrm           # [linux]
+    - libgl-devel      # [linux]
+    - libglx-devel     # [linux]
+    - libegl-devel     # [linux]
+    - wayland          # [linux]
+    - libxcb           # [linux]
+    - xorg-libx11      # [linux]
+    - xorg-libxext     # [linux]
+    - xorg-libxfixes   # [linux]
   run:
-    - wayland-protocols
-    - xorg-libx11
-    - xorg-libxext
-    - xorg-libxfixes
+    - wayland-protocols  # [linux]
+    - xorg-libxfixes     # [linux]
 
 test:
   commands:
-    - test -f $PREFIX/include/va/va.h
-    - test -f $PREFIX/lib/libva.so
-    - test -f $PREFIX/lib/libva.so.2
-    - test -f $PREFIX/lib/pkgconfig/libva.pc
-    - test -f $PREFIX/include/va/va_drm.h
-    - test -f $PREFIX/lib/libva-drm.so
-    - test -f $PREFIX/lib/libva-drm.so.2
-    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc
-    # Uncomment when merged: https://github.com/conda-forge/staged-recipes/pull/25919
-    # - test -f $PREFIX/include/va/va_glx.h
-    # - test -f $PREFIX/lib/libva-glx.so
-    # - test -f $PREFIX/lib/libva-glx.so.2
-    # - test -f $PREFIX/lib/pkgconfig/libva-glx.pc
-    - test -f $PREFIX/include/va/va_wayland.h
-    - test -f $PREFIX/lib/libva-wayland.so
-    - test -f $PREFIX/lib/libva-wayland.so.2
-    - test -f $PREFIX/lib/pkgconfig/libva-wayland.pc
-    - test -f $PREFIX/include/va/va_x11.h
-    - test -f $PREFIX/lib/libva-x11.so
-    - test -f $PREFIX/lib/libva-x11.so.2
-    - test -f $PREFIX/lib/pkgconfig/libva-x11.pc
+    - test -f $PREFIX/include/va/va.h                    # [unix]
+    - test -f $PREFIX/lib/libva.so                       # [unix]
+    - test -f $PREFIX/lib/libva.so.2                     # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libva.pc             # [unix]
+    - test -f $PREFIX/include/va/va_drm.h                # [unix]
+    - test -f $PREFIX/lib/libva-drm.so                   # [unix]
+    - test -f $PREFIX/lib/libva-drm.so.2                 # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libva-drm.pc         # [unix]
+    - test -f $PREFIX/include/va/va_glx.h                # [unix]
+    - test -f $PREFIX/lib/libva-glx.so                   # [unix]
+    - test -f $PREFIX/lib/libva-glx.so.2                 # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libva-glx.pc         # [unix]
+    - test -f $PREFIX/include/va/va_wayland.h            # [unix]
+    - test -f $PREFIX/lib/libva-wayland.so               # [unix]
+    - test -f $PREFIX/lib/libva-wayland.so.2             # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libva-wayland.pc     # [unix]
+    - test -f $PREFIX/include/va/va_x11.h                # [unix]
+    - test -f $PREFIX/lib/libva-x11.so                   # [unix]
+    - test -f $PREFIX/lib/libva-x11.so.2                 # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libva-x11.pc         # [unix]
+    - if not exist %PREFIX%/Library/bin/va.dll exit 1       # [win]
+    - if not exist %PREFIX%/Library/lib/va.lib exit 1       # [win]
+    - if not exist %PREFIX%/Library/include/va/va.h exit 1  # [win]
 
 about:
   home: https://github.com/intel/libva
