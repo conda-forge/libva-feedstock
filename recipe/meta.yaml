@@ -36,7 +36,6 @@ requirements:
     - xorg-libxfixes   # [linux]
   run:
     - wayland-protocols  # [linux]
-    - xorg-libxfixes     # [linux]
 
 test:
   commands:
