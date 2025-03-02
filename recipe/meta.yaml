@@ -9,9 +9,7 @@ source:
   sha256: 467c418c2640a178c6baad5be2e00d569842123763b80507721ab87eb7af8735
   patches:
     # https://github.com/conda-forge/libva-utils-feedstock/issues/36
-    - 0001-Add-more-locations-to-find-the-dri.patch           # [linux64]
-    - 0001-Add-more-locations-to-find-the-dri-aarch64.patch   # [aarch64]
-    - 0001-Add-more-locations-to-find-the-dri-ppc64le.patch   # [ppc64le]
+    - 0001-Add-more-locations-to-find-the-dri.patch  # [linux]
 
 build:
   skip: true  # [osx]
