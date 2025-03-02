@@ -9,7 +9,7 @@ source:
   sha256: 467c418c2640a178c6baad5be2e00d569842123763b80507721ab87eb7af8735
   patches:
     # https://github.com/conda-forge/libva-utils-feedstock/issues/36
-    - 0001-Add-more-locations-to-find-the-dri.patch  # [linux]
+    - 0001-Add-system-driver-locations.patch  # [linux]
 
 build:
   skip: true  # [osx]
