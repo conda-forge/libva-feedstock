@@ -19,7 +19,7 @@ index 9b71bf7..369ac6a 100644
 +    driverdir = '@0@/dri:@1@/dri:@2@/dri'.format(
 +      join_paths(get_option('prefix'), get_option('libdir')),
 +      # This is where the Ubuntu package installs the drivers
-+      '/usr/lib/@MULTIARCH_PLACEHOLDER@',
++      '/usr/lib/x86_64-linux-gnu',
 +      # This seems to be where Fedora puts them
 +      '/usr/lib64/'
 +    )
