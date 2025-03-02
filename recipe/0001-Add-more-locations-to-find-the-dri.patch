@@ -16,7 +16,7 @@ index 9b71bf7..369ac6a 100644
      driverdir = join_paths(get_option('prefix'), get_option('bindir'))
    else
 -    driverdir = join_paths(get_option('prefix'), get_option('libdir'), 'dri')
-+    driverdir = '@0@/dri:@1@/dir:@2@/dri'.format(
++    driverdir = '@0@/dri:@1@/dri:@2@/dri'.format(
 +      join_paths(get_option('prefix'), get_option('libdir')),
 +      # This is where the Ubuntu package installs the drivers
 +      '/usr/lib/x86_64-linux-gnu',
