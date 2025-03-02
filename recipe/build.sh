@@ -9,6 +9,12 @@ export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}${PREFIX}/lib/pkg
 
 export PKG_CONFIG="$(which pkg-config)"
 
+if [[ "${target_platform}" == linux-* ]]; then
+    # Set correct multiarch for Linux
+    MULTIARCH="$(gcc -print-multiarch | sed -e 's/i.*86/i386/')"
+    sed -i "s/@MULTIARCH_PLACEHOLDER@/${MULTIARCH}/g" meson.build
+fi
+
 meson setup ${MESON_ARGS} ..
 
 ninja
