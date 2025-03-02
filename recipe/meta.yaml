@@ -6,12 +6,16 @@ package:
 
 source:
   url: https://github.com/intel/libva/archive/{{ version }}.tar.gz
-  fn: libva-{{ version }}.tar.gz
   sha256: 467c418c2640a178c6baad5be2e00d569842123763b80507721ab87eb7af8735
+  patches:
+    # https://github.com/conda-forge/libva-utils-feedstock/issues/36
+    - 0001-Add-system-driver-locations.patch          # [linux64]
+    - 0001-Add-system-driver-locations-aarch64.patch  # [aarch64]
+    - 0001-Add-system-driver-locations-ppc64le.patch  # [ppc64le]
 
 build:
   skip: true  # [osx]
-  number: 1
+  number: 2
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
