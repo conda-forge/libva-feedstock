@@ -1,4 +1,4 @@
-{% set version = "2.22.0" %}
+{% set version = "2.23.0" %}
 
 package:
   name: libva
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/intel/libva/archive/{{ version }}.tar.gz
-  sha256: 467c418c2640a178c6baad5be2e00d569842123763b80507721ab87eb7af8735
+  sha256: b10aceb30e93ddf13b2030eb70079574ba437be9b3b76065caf28a72c07e23e7
   patches:
     # https://github.com/conda-forge/libva-utils-feedstock/issues/36
     - 0001-Add-system-driver-locations.patch          # [linux64]
@@ -15,7 +15,7 @@ source:
 
 build:
   skip: true  # [osx]
-  number: 2
+  number: 0
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
@@ -74,7 +74,6 @@ about:
   license_file: COPYING
   summary: Libva is an implementation for VA-API (Video Acceleration API)
 
-  # The remaining entries in this section are optional, but recommended
   description: |
     VA-API is an open-source library and API specification, which provides
     access to graphics hardware acceleration capabilities for video processing.
