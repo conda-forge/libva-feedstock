@@ -15,7 +15,7 @@ source:
 
 build:
   skip: true  # [osx]
-  number: 0
+  number: 1
   # Pretty good forward compatibility
   # https://abi-laboratory.pro/index.php?view=timeline&l=libva
   run_exports:
